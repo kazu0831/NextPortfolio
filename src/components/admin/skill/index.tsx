@@ -1,8 +1,78 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const AdminSkill = () => {
+  const [skills, setSkills] = useState("");
+  const [id, setId] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/api/skill/get");
+
+        if (res) {
+          const getData = await res.json();
+          setSkills(getData.skills);
+          setId(getData._id);
+        } else {
+          console.log("失敗しました");
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleSubmit = async () => {
+    try {
+      const data = {
+        skills: skills,
+      };
+
+      if (Object.values(data).some((value) => !value)) {
+        return;
+      }
+
+      const res = await fetch("/api/skill/post", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const resData = await res.json();
+      alert("登録しました");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleUpdate = async () => {
+    try {
+      const data = {
+        id: id,
+        skills: skills,
+      };
+
+      if (Object.values(data).some((value) => !value)) {
+        return;
+      }
+
+      const res = await fetch("/api/skill/update", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      alert("更新しました");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="min-w-full">
       <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -14,13 +84,25 @@ const AdminSkill = () => {
             <input
               className="border py-2 px-4 focus:outline-none"
               type="text"
+              value={skills}
+              onChange={(e) => setSkills(e.target.value)}
             />
           </div>
         </div>
 
         <div className="flex justify-center items-center">
-          <button className="mt-4 border rounded-md bg-green-200 border-green-600 py-2 px-4 font-bold text-[16px]">
+          <button
+            onClick={handleSubmit}
+            className="mt-4 border rounded-md bg-green-200 border-green-600 py-2 px-4 font-bold text-[16px]"
+          >
             登録
+          </button>
+
+          <button
+            onClick={handleUpdate}
+            className="mt-4 ml-8 border rounded-md bg-blue-400 border-blue-600 py-2 px-4 font-bold text-[16px]"
+          >
+            編集
           </button>
         </div>
       </div>
