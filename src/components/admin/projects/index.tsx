@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface Project {
   _id: string;
@@ -11,28 +11,26 @@ interface Project {
 }
 
 const AdminProjects = () => {
+  const idRef = useRef('')
   const [data, setData] = useState<Project[]>([]);
   const [project, setProject] = useState("");
   const [stack, setStack] = useState("");
   const [webURL, setWebURL] = useState("");
   const [githubURL, setGithubURL] = useState("");
-  const [id, setId] = useState("");
+  const [id, setId] = useState('')
 
-  useEffect(() => {
-    const getAllProjects = async () => {
-      try {
-        const res = await fetch("api/projects/getAll", {
-          method: "GET",
-        });
+  const getAllProjects = async () => {
+    try {
+      const res = await fetch("api/projects/getAll", {
+        method: "GET",
+      });
 
-        const data = await res.json();
-        setData(data);
-      } catch (err) {
-        alert("データの取得に失敗しました");
-      }
-    };
-    getAllProjects();
-  }, []);
+      const data = await res.json();
+      setData(data);
+    } catch (err) {
+      alert("データの取得に失敗しました");
+    }
+  };
 
   const handleSubmit = async () => {
     try {
@@ -86,12 +84,14 @@ const AdminProjects = () => {
 
       const resData = await res.json();
       alert("更新しました");
+      getAllProjects()
     } catch (err) {
       console.log(err);
     }
   };
 
-  const getSingleData = async () => {
+  const getSingleData = async (id: string) => {
+
     try {
       const res = await fetch(`/api/projects/getSingle?id=${id}`);
 
@@ -101,6 +101,7 @@ const AdminProjects = () => {
         setStack(getData.stack);
         setWebURL(getData.webURL);
         setGithubURL(getData.githubURL);
+        setId(id)
       } else {
         console.log("失敗しました");
       }
@@ -108,6 +109,11 @@ const AdminProjects = () => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    getAllProjects();
+  }, []);
+
   return (
     <div className="min-w-full">
       <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -182,8 +188,8 @@ const AdminProjects = () => {
               className="text-left w-80  mt-4 cursor-pointer text-sm font-bold border rounded p-4 mr-3"
               key={index}
               onClick={() => {
-                setId(p._id);
-                getSingleData();
+                idRef.current = p._id
+                getSingleData(idRef.current)
               }}
             >
               <p>概要: {p.project}</p>
