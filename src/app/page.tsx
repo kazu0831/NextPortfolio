@@ -1,5 +1,7 @@
+import About from "@/components/client/about";
 import Nav from "@/components/client/common/nav";
-import Dino from "@/components/client/three/Dino";
+import TOP from "@/components/client/home";
+import Skills from "@/components/client/skills";
 
 export default function Home() {
   return (
@@ -10,19 +12,19 @@ export default function Home() {
           id="home"
           className="pt-[80px] h-screen bg-blue-800 text-white font-bold text-center text-2xl"
         >
-          <Dino />
+          <TOP />
         </div>
         <div
           id="about"
           className="pt-[80px] h-screen bg-green-800 text-white font-bold text-center text-2xl"
         >
-          about
+          <About />
         </div>
         <div
           id="skill"
           className="pt-[80px] h-screen bg-yellow-800 text-white font-bold text-center text-2xl"
         >
-          skill
+          <Skills />
         </div>
         <div
           id="projects"
