@@ -47,7 +47,7 @@ const Admin = () => {
   return (
     <div>
       <nav
-        className="-mb-0.5 flex justify-center space-x-2 md:space-x-6 border-b-2"
+        className="-mb-0.5 text-white flex justify-center space-x-2 md:space-x-6 border-b-2"
         role="tablist"
       >
         {menuItems.map((item) => (

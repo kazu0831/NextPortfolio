@@ -90,6 +90,29 @@ const AdminProjects = () => {
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      const data = {
+        id: id,
+      };
+
+      if (Object.values(data).some((value) => !value)) {
+        return;
+      }
+
+      const res = await fetch("/api/projects/delete", {
+        method: "DELETE",
+        body: JSON.stringify(data),
+      });
+
+      alert("削除しました");
+      getAllProjects()
+    } catch (err) {
+      console.log(err);
+      alert('削除に失敗しました')
+    }
+  };
+
   const getSingleData = async (id: string) => {
 
     try {
@@ -176,6 +199,13 @@ const AdminProjects = () => {
             className="mt-4 ml-8 border rounded-md bg-blue-400 border-blue-600 py-2 px-4 font-bold text-[16px]"
           >
             編集
+          </button>
+
+          <button
+            onClick={handleDelete}
+            className="mt-4 ml-8 border rounded-md bg-red-600 border-red-800 py-2 px-4 font-bold text-[16px]"
+          >
+            削除
           </button>
         </div>
 

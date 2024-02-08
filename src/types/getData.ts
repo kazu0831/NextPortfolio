@@ -21,3 +21,10 @@ export interface AboutData{
     message: string;
 }
 
+export interface ProjectsData{
+    project: string;
+    stack: string;
+    webURL: string;
+    githubURL: string
+}
+

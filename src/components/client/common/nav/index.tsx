@@ -10,7 +10,9 @@ const Nav: React.FC = () => {
   return (
     <nav className="h-[80px] flex items-center justify-between px-6 bg-white bg-opacity-50 text-white font-bold top-0 fixed z-20 min-w-full ">
       <div className="py-6">
-        <button onClick={() => scrollToSection("home")}>logo</button>
+        <button onClick={() => scrollToSection("home")} className="bg-white pl-1 pr-3 py-2 rounded-sm text-black">
+          <span className="p-2 mr-2 text-white bg-yellow-400 rounded-md">Kz</span>Portfolio
+        </button>
       </div>
 
       <ul className="flex">

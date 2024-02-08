@@ -29,11 +29,12 @@ const TOP = () => {
         fetchData()
     }, [])
 
+
     return (
         <div className='h-full container relative'>
             {homeData ? (
 
-                <div className='flex flex-col items-center justify-center absolute bottom-72 left-20 md:left-24 z-10'>
+                <div className='flex flex-col items-center justify-center absolute bottom-72 left-6 md:left-24 z-10'>
                     <h1 className='text-center text-4xl md:text-6xl'>{homeData.title}</h1>
                     <p className='text-center mt-8 md:text-2xl'>{homeData.subtitle}</p>
                 </div>

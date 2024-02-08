@@ -2,14 +2,13 @@ import { connectDB } from "@/database";
 import { Contact } from "@/models/Contact";
 import { NextResponse } from "next/server";
 
-export const POST = async (req: Request, res: NextResponse) => {
+export const GET = async (req: Request) => {
   try {
     await connectDB();
-    const data = await req.json();
-    const submitData = await Contact.create(data);
+    const data = await Contact.find();
 
-    if (submitData) {
-      return NextResponse.json({ message: "success" }, { status: 200 });
+    if (data) {
+      return NextResponse.json(data, { status: 200 });
     } else {
       return NextResponse.json({ message: "ERROR" }, { status: 500 });
     }
