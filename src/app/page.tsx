@@ -12,32 +12,20 @@ export default function Home() {
       <div className="w-full">
         <div
           id="home"
-          className="pt-[80px] h-screen bg-blue-800 text-white font-bold text-center text-2xl"
+          className="pt-[80px] h-screen text-white font-bold text-center text-2xl"
         >
           <TOP />
         </div>
-        <div
-          id="about"
-          className="pt-[80px] pb-[80px] bg-green-800 text-white"
-        >
+        <div id="about" className="pt-[80px] pb-[80px] text-white">
           <About />
         </div>
-        <div
-          id="skill"
-          className="pt-[80px] pb-[80px] bg-yellow-800 text-white"
-        >
+        <div id="skill" className="pt-[80px] pb-[80px] text-white">
           <Skills />
         </div>
-        <div
-          id="projects"
-          className="pt-[80px] pb-[80px] bg-red-800 text-white"
-        >
+        <div id="projects" className="pt-[80px] pb-[80px] text-white">
           <Projects />
         </div>
-        <div
-          id="contact"
-          className="pt-[80px] h-screen bg-purple-800 text-white"
-        >
+        <div id="contact" className="pt-[80px] h-screen text-white">
           <Contact />
         </div>
       </div>
