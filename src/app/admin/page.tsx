@@ -6,15 +6,21 @@ import AdminHome from "@/components/admin/home";
 import Login from "@/components/admin/login";
 import AdminProjects from "@/components/admin/projects";
 import AdminSkill from "@/components/admin/skill";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const Admin = () => {
+  const router = useRouter()
   const [selectedTab, setSelectedTab] = useState("Home");
   const [auth, setAuth] = useState(false);
 
   const handleLogin = (value: boolean) => {
     setAuth(value);
   };
+
+  const handleHome = () => {
+    router.push('/')
+  }
   const menuItems = [
     {
       id: "Home",
@@ -66,6 +72,10 @@ const Admin = () => {
           (item) =>
             item.id === selectedTab && <div key={item.id}>{item.component}</div>
         )}
+      </div>
+
+      <div className="flex justify-center mt-4">
+        <button onClick={handleHome} className="font-bold w-16 h-8 rounded-md bg-white">戻る</button>
       </div>
     </div>
   );
