@@ -10,7 +10,9 @@ const Projects = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res4 = await fetch("/api/projects/getAll");
+        const res4 = await fetch("/api/projects/getAll", {
+          cache: "no-store",
+        });
         const projects = await res4.json();
         setProjectseData(projects);
       } catch (err) {

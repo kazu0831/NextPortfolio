@@ -8,18 +8,16 @@ import Fastfood from "../three";
 
 const TOP = () => {
   const [homeData, setHomeData] = useState<HomeData | null>();
-  const [projectsData, setProjectseData] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/api/home/get");
+        const res = await fetch("/api/home/get", {
+          cache: "no-store",
+        });
         const home = await res.json();
         setHomeData(home);
 
-        const res4 = await fetch("/api/projects/getAll");
-        const projects = await res4.json();
-        setProjectseData(projects);
       } catch (err) {
         console.log(err);
       }

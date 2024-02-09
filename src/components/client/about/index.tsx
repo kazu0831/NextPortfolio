@@ -11,7 +11,9 @@ const About = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res2 = await fetch("/api/about/get");
+        const res2 = await fetch("/api/about/get", {
+          cache: "no-store",
+        });
         const about = await res2.json();
         setAboutData(about);
       } catch (err) {

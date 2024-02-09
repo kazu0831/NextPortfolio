@@ -16,7 +16,8 @@ const AdminContact = () => {
     const getAllData = async () => {
       try {
         const res = await fetch('/api/contact/get', {
-          method: 'GET'
+          method: 'GET',
+          cache: "no-store",
         })
 
         const result = await res.json()

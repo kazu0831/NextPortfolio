@@ -10,7 +10,9 @@ const Skills = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch('/api/skill/get')
+                const res = await fetch('/api/skill/get', {
+                    cache: "no-store",
+                })
                 const skill = await res.json()
                 setSkillData(skill)
             } catch (err) {
