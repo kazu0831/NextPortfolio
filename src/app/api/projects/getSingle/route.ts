@@ -1,9 +1,8 @@
 import { connectDB } from "@/database";
 import { Projects } from "@/models/Projects";
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (req: NextApiRequest) => {
+export const GET = async (req:NextRequest) => {
   try {
     await connectDB();
 

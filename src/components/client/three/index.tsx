@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/Addons.js";
 
 const Fastfood = () => {
-  let model: THREE.Group;
-  let mixer: THREE.AnimationMixer;
+  const model = useRef<THREE.Group>();
+  const mixer = useRef<THREE.AnimationMixer>();
   useEffect(() => {
     const canvas = document.getElementById("canvas") as HTMLCanvasElement;
 
@@ -37,16 +37,16 @@ const Fastfood = () => {
     const gltfLoader = new GLTFLoader();
 
     gltfLoader.load("./models/food.gltf", (gltf) => {
-      model = gltf.scene;
-      model.scale.set(1, 1, 1);
-      scene.add(model);
+      model.current = gltf.scene;
+      model.current.scale.set(1, 1, 1);
+      scene.add(model.current);
 
-      mixer = new THREE.AnimationMixer(model);
+      mixer.current = new THREE.AnimationMixer(model.current);
       const clips = gltf.animations;
 
       clips.forEach(function (clip) {
-        const action = mixer.clipAction(clip);
-        action.play();
+        const action = mixer.current?.clipAction(clip);
+        action?.play();
       });
     });
 
@@ -70,13 +70,13 @@ const Fastfood = () => {
     window.addEventListener("resize", handleResize);
 
     const tick = () => {
-      if (model) {
-        model.rotation.y += 0.002;
+      if (model.current) {
+        model.current.rotation.y += 0.002;
       }
       renderer.render(scene, camera);
 
-      if (mixer) {
-        mixer.update(0.025);
+      if (mixer.current) {
+        mixer.current.update(0.025);
       }
 
       requestAnimationFrame(tick);
