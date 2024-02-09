@@ -9,27 +9,36 @@
 
 
  
-## DEMO
- 
-"hoge"の魅力が直感的に伝えわるデモ動画や図解を載せる
+## Image
+
+### トップページ
+![img1](https://github.com/kazu0831/NextPortfolio/assets/137796197/67f05758-4d31-47ed-9986-903f8eed5570)
+
+### ログイン画面
+![img2](https://github.com/kazu0831/NextPortfolio/assets/137796197/99d0e1c1-c52f-4503-b330-426f26df5153)
+
+### admin画面
+![img3](https://github.com/kazu0831/NextPortfolio/assets/137796197/da7bb7e9-6cf5-4894-997c-2beaaf96623f)
+
+### Contactページ(admin)
+![img4](https://github.com/kazu0831/NextPortfolio/assets/137796197/1496e072-04d8-4fea-a5bf-326a22a9057f)
+
  
 ## Features
  
-"hoge"のセールスポイントや差別化などを説明する
+| 内容 | 言語・フレームワーク |
+|-----|-----|
+| フロントエンド | Nextjs, TypeScript, Threejs, tailwindcss |
+| バックエンド(API) | Nextjs, TypeScript |
+| DB | mongoDB, mongoose |
+| デプロイ | Vercel |
+| CICD | Vercel |
  
-## Requirement
- 
-"hoge"を動かすのに必要なライブラリなどを列挙する
- 
-* huga 3.5.2
-* hogehuga 1.0.2
- 
+
 ## Installation
  
-Requirementで列挙したライブラリなどのインストール方法を説明する
- 
 ```bash
-pip install huga_package
+npm install 
 ```
  
 ## Usage
@@ -42,23 +51,7 @@ cd examples
 python demo.py
 ```
  
-## Note
+## 反省点
  
-注意点などがあれば書く
- 
-## Author
- 
-作成情報を列挙する
- 
-* 作成者
-* 所属
-* E-mail
- 
-## License
-ライセンスを明示する
- 
-"hoge" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
- 
-社内向けなら社外秘であることを明示してる
- 
-"hoge" is Confidential.
+・テストコードを書いていないこと
+・デプロイ後、APIのGETメソッドが機能していない（VercelのプランによるCacheが影響？）
