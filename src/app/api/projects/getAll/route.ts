@@ -8,7 +8,13 @@ export const GET = async (req: Request) => {
     const data = await Projects.find();
 
     if (data) {
-      return NextResponse.json(data, { status: 200 });
+      return NextResponse.json(data, { 
+          status: 200 ,
+          headers: {
+            'Cache-Control': 'no-store',
+            'CDN-Cache-Control': 'no-store',
+            'Vercel-CDN-Cache-Control': 'no-store'
+      }});
     } else {
       return NextResponse.json({ message: "ERROR" }, { status: 500 });
     }
