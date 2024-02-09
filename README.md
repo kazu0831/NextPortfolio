@@ -51,7 +51,7 @@ cd NextPortfolio
 npm run dev
 ```
  
-## 反省点
+## 反省点(解消中)
  
 ・テストコードを書いていないこと  
 ・デプロイ後、APIのGETメソッドが機能していない（VercelのプランによるCacheが影響？）
