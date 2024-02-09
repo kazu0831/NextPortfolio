@@ -21,7 +21,7 @@ const AdminProjects = () => {
 
   const getAllProjects = async () => {
     try {
-      const res = await fetch("api/projects/getAll", {
+      const res = await fetch("/api/projects/getAll", {
         method: "GET",
       });
 

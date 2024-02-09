@@ -15,7 +15,7 @@ const AdminContact = () => {
   useEffect(() => {
     const getAllData = async () => {
       try {
-        const res = await fetch('api/contact/get', {
+        const res = await fetch('/api/contact/get', {
           method: 'GET'
         })
 

@@ -9,8 +9,6 @@ export const GET = async (req:NextRequest) => {
     const url = req.url;
     const id = url?.split("?id=")[1];
 
-    console.log(id);
-
     const data = await Projects.findById(id);
 
     if (data) {

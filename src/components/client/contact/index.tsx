@@ -7,7 +7,8 @@ const Contact = () => {
     const [email, setEmail] = useState('')
     const [content, setContent] = useState('')
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
         try {
 
             const data = {
